@@ -20,6 +20,7 @@ class TreeLeaf(Leaf):
         print(prefix + self.name)
 
 
+# 工厂方法模式，通过VisualizerFactory创建具体的Visualizer对象
 class TreeVisualizer:
     def visualize(self, data, icon_family):
         root = self._build_tree(data)

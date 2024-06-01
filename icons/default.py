@@ -1,10 +1,10 @@
 from .base import IconFamily
 
 
+# 具体产品类，表示默认的图标集
 class DefaultIconFamily(IconFamily):
-    def __init__(self):
-        super().__init__()
-        self.icons = {
+    def get_icons(self):
+        return {
             'node': ' ',
             'leaf': ' '
         }

@@ -7,6 +7,7 @@ from icons.factory import IconFactory
 
 
 def process_command(command):
+    # 使用argparse解析命令行参数
     parser = argparse.ArgumentParser(description='Funny JSON Explorer (FJE)')
     parser.add_argument('-f', '--file', required=True, help='Path to the JSON file')
     parser.add_argument('-s', '--style', choices=VisualizerFactory.get_styles(), default='tree',
@@ -17,8 +18,11 @@ def process_command(command):
         # 移除 "fje" 前缀并解析参数
         args = parser.parse_args(shlex.split(command))
         json_data = parse_json(args.file)
+        # 使用工厂方法模式创建相应的Visualizer对象
         visualizer = VisualizerFactory.create_visualizer(args.style)
+        # 使用抽象工厂模式创建相应的IconFamily对象
         icons = IconFactory.create_icon_family(args.icon)
+        # 可视化JSON数据
         visualizer.visualize(json_data, icons)
     except SystemExit:
         print("Invalid command. Please use the format: fje -f <json file> -s <style> -i <icon family>")

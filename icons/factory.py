@@ -2,6 +2,7 @@ from .default import DefaultIconFamily
 from .fancy import FancyIconFamily
 
 
+# 工厂方法模式，通过IconFactory创建具体的IconFamily对象
 class IconFactory:
     @staticmethod
     def create_icon_family(name):

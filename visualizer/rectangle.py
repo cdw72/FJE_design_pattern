@@ -17,7 +17,7 @@ class RectangleContainer(Container):
             suffix = ' ' + '─' * (width - len(self.name) - len(prefix) - len(' ') - len('┤')) + '┤'
             print(prefix + self.name + suffix)
         for i, child in enumerate(self.children):
-            child.draw(icon_family, level + 1, i == len(self.children) - 1, width, isfirst,the_last)
+            child.draw(icon_family, level + 1, i == len(self.children) - 1, width, isfirst, the_last)
             if level == 0 and isfirst:
                 isfirst = False
 
@@ -33,6 +33,7 @@ class RectangleLeaf(Leaf):
         print(prefix + self.name + suffix)
 
 
+# 工厂方法模式，通过VisualizerFactory创建具体的Visualizer对象
 class RectangleVisualizer:
     def visualize(self, data, icon_family):
         root = self._build_tree(data)
